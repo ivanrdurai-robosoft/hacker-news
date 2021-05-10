@@ -5,11 +5,11 @@ import moment from 'moment';
 const Item = ({id, number}) => {
 
     const [result, setResult] = useState([]);
+    async function getData() {
+        let data = await api.item(id);
+        setResult(data);
+    }
     useEffect(() => {
-        async function getData() {
-            let data = await api.item(id);
-            setResult(data);
-        }
         getData();
     }, [id]);
 
